@@ -2,7 +2,14 @@ package cml.ejercicio1.entidad;
 
 import java.util.Date;
 
-public class Paciente {
+public class Paciente2 {
+	
+	String rut;	
+	String nombre;
+	String apellido;
+	String edad;
+	String estadoCovid;
+	String fechaDeContagio;
 	
 	public String getRut() {
 		return rut;
@@ -22,28 +29,24 @@ public class Paciente {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public int getEdad() {
+	public String getEdad() {
 		return edad;
 	}
-	public void setEdad(int edad) {
+	public void setEdad(String edad) {
 		this.edad = edad;
 	}
-	public boolean isEstadoCovid() {
+	public String getEstadoCovid() {
 		return estadoCovid;
 	}
-	public void setEstadoCovid(boolean estadoCovid) {
+	public void setEstadoCovid(String estadoCovid) {
 		this.estadoCovid = estadoCovid;
 	}
-	public Date getFechaDeContagio() {
+	public String getFechaDeContagio() {
 		return fechaDeContagio;
 	}
-	public void setFechaDeContagio(Date fechaDeContagio) {
+	public void setFechaDeContagio(String fechaDeContagio) {
 		this.fechaDeContagio = fechaDeContagio;
 	}
-	String rut;	
-	String nombre;
-	String apellido;
-	int edad;
-	boolean estadoCovid;
-	Date fechaDeContagio;
+	
+	
 }
