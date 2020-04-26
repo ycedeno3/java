@@ -1,2 +1,2 @@
-1 ; andres ; apellido ; 5 ; true ; 2-2-1984
-2 ; a ; b ; 2 ; true ; 2-2-1984
+1320321 ; andres ; perez ; 5 ; true ; 20-12-2004
+1245673 ; juan ; torres ; 22 ; true ; 02-02-1994

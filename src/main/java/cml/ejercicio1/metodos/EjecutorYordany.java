@@ -1,18 +1,16 @@
-package cml.ejercicio1;
+package cml.ejercicio1.metodos;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import cml.ejercicio1.entidad.Paciente;
+
 import cml.ejercicio1.entidad.Paciente2;
-import cml.ejercicio1.metodos.Opciones;
 
-public class Ejecutor {
+public class EjecutorYordany {
 
-	public static void main(String[] args) throws IOException {
+	public void archivo() throws IOException {
 		InputStream is = null;
 		int i;
 		char c;
@@ -27,7 +25,7 @@ public class Ejecutor {
 			String string;
 			while ((i = is.read()) != -1) {
 				c = (char) i;
-				if (!(c == ';')&&!(c == '\n')) {
+				if (!(c == ';') && !(c == '\n')) {
 					sb.append(c);
 				} else {
 					string = sb.toString().trim();
