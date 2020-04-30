@@ -8,17 +8,15 @@ import java.util.List;
 
 import cml.ejercicio1.entidad.Paciente2;
 
-public class EjecutorYordany {
+public class LeerArchivo {
 
-	public void archivo() throws IOException {
+	public void leer(String rut) throws IOException {
 		InputStream is = null;
 		int i;
 		char c;
 		try {
-			// new input stream created
 			is = new FileInputStream("./listaPacientes.txt");
 			StringBuilder sb = new StringBuilder();
-			// reads till the end of the stream
 			List<Paciente2> listaPaciente = new ArrayList<Paciente2>();
 			int columna = 0;
 			Paciente2 paciente = new Paciente2();
@@ -57,23 +55,30 @@ public class EjecutorYordany {
 				}
 			}
 			for (Paciente2 paciente2 : listaPaciente) {
-				System.out.print(paciente2.getRut());
-				System.out.print("|");
-				System.out.print(paciente2.getNombre());
-				System.out.print("|");
-				System.out.print(paciente2.getApellido());
-				System.out.print("|");
-				System.out.print(paciente2.getEdad());
-				System.out.print("|");
-				System.out.print(paciente2.getFechaDeContagio());
-				System.out.println();
+				if (rut.contains(paciente2.getRut())) {
+					System.out.print("El rut: " + rut + " ya Existe, puedes realizar las siguientes acciones en el sistema");
+					System.out.println();
+					System.out.println("2. Modificar       3. Eliminar       4. Salir");
+					break;
+				} else {
+//					System.out.print(paciente2.getRut());
+//					System.out.print("|");
+//					System.out.print(paciente2.getNombre());
+//					System.out.print("|");
+//					System.out.print(paciente2.getApellido());
+//					System.out.print("|");
+//					System.out.print(paciente2.getEdad());
+//					System.out.print("|");
+//					System.out.print(paciente2.getFechaDeContagio());
+//					System.out.println();
+				}
 			}
-
+			System.out.print("El rut: " + rut + " no existe, puede realizar las siguientes acciones en el sistema");
+			System.out.println();
+			System.out.println("1. Agregar       4. Salir");
 		} catch (Exception e) {
-			// if any I/O error occurs
 			System.out.println(e);
 		} finally {
-			// releases system resources associated with this stream
 			if (is != null)
 				is.close();
 		}
