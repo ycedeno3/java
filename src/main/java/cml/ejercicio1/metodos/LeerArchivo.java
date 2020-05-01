@@ -10,7 +10,7 @@ import cml.ejercicio1.entidad.Paciente2;
 
 public class LeerArchivo {
 
-	public void leer(String rut) throws IOException {
+	public boolean leer(String rut) throws IOException {
 		InputStream is = null;
 		int i;
 		char c;
@@ -55,11 +55,8 @@ public class LeerArchivo {
 				}
 			}
 			for (Paciente2 paciente2 : listaPaciente) {
-				if (rut.contains(paciente2.getRut())) {
-					System.out.print("El rut: " + rut + " ya Existe, puedes realizar las siguientes acciones en el sistema");
-					System.out.println();
-					System.out.println("2. Modificar       3. Eliminar       4. Salir");
-					break;
+				if (rut.equals(paciente2.getRut())) {
+					return true;
 				} else {
 //					System.out.print(paciente2.getRut());
 //					System.out.print("|");
@@ -73,14 +70,13 @@ public class LeerArchivo {
 //					System.out.println();
 				}
 			}
-			System.out.print("El rut: " + rut + " no existe, puede realizar las siguientes acciones en el sistema");
-			System.out.println();
-			System.out.println("1. Agregar       4. Salir");
+			return false;
 		} catch (Exception e) {
 			System.out.println(e);
 		} finally {
 			if (is != null)
 				is.close();
 		}
+		return false;
 	}
 }

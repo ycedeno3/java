@@ -9,60 +9,62 @@ import cml.ejercicio1.metodos.LeerArchivo;
 
 public class Menu {
 
-	public static void main(String[] args) throws IOException {
-		Scanner sn = new Scanner(System.in);
-		boolean agregar = false;
-		boolean salir = false;
-		int opcion;
+	public static Scanner test = null;
 
+	public static void main(String[] args) throws IOException {
+		
+		boolean salir = false;		
 		while (!salir) {
+			try {
 			String s = "Sistema de Manejo de pacientes con COVID-19.";
 			Scanner scan = new Scanner(s);
 			System.out.println(scan.nextLine());
 			scan.close();
 			System.out.println("");
 			System.out.println("--------Ingresar Información de Paciente--------");
-			scan.close();
-			Scanner in = new Scanner(System.in);
+			test = new Scanner(System.in);
 			System.out.print("Ingrese RUT del paciente: ");
-			String rut = in.next();		
-			
-			LeerArchivo ejecutor = new LeerArchivo();
-			ejecutor.leer(rut);
-			
-			try {
-				System.out.println("Digite el numero de la opcion que desea relaizar: ");
-				opcion = sn.nextInt();
-				switch (opcion) {
-
+			String rut = test.next();
+			if(new LeerArchivo().leer(rut)==false)
+			{
+				System.out.print("El rut: " + rut + " no existe, puede realizar las siguientes acciones en el sistema");
+				System.out.println();
+				System.out.println("1. Agregar       2. Salir");
+				String opcionFalse;
+				do {
+				 opcionFalse = test.next();
+				 if(!opcionFalse.equals("1")&&!opcionFalse.equals("2")){
+					 System.out.println("Opcion incorrecta seleccione 1. Agregar  2. Salir");
+				 }				
+				}while(!opcionFalse.equals("1")&&!opcionFalse.equals("2"));
+				int optFalse  = Integer.parseInt(opcionFalse);
+				switch (optFalse) {
 				case 1:
-					agregar = true;
-					System.out.println("Ingresa datos del Paciente: ");
-					Agregar r = new Agregar();
-					r.nuevoPaciente();
+					if(new Agregar().nuevoPaciente(test))
+					{
+						System.out.println("Paciente Ingresado");
+					}else {
+						System.out.println("Problemas al ingresar Paciente");
+					}					
 					break;
 				case 2:
-					System.out.println(
-							"El paciente  ya esta ingresado, Desea modificar los datos del paciente:");
-					break;
-
-				case 3:
-					System.out.println("Deseas eliminar al Paciente: ?");
-					break;
-
-				case 4:
 					salir = true;
-					System.out.println("Has salido del sistema");
 					break;
-
 				default:
-					System.out.println("Opcion incorrecta, por favor selecciona una opcion valida");
 					break;
-				}
+				}			
+			}else {
+				System.out.print("El rut: " + rut + " ya Existe, puedes realizar las siguientes acciones en el sistema");
+				System.out.println();
+				System.out.println("2. Modificar       3. Eliminar       4. Salir");
+			}			
 			} catch (InputMismatchException e) {
 				System.out.println("Debes insertar un numero");
-				sn.next();
+				test.next();
+			}finally {
+				
 			}
 		}
+		test.close();
 	}
 }
